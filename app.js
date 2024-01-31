@@ -1,4 +1,5 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { mapReplica } from "./components/map.js";
 
 // Define width and height of the SVG element
 const width = window.innerWidth; // Full width of the browser window
@@ -10,40 +11,53 @@ const svg = d3
   .attr("width", width)
   .attr("height", height);
 
-// Generate a stipple gradient effect by creating dots with varying density
-
-// i want to generate this in a rect of 50 x 300
-
-const numDots = 8000; // The number of dots you want to generate
-const dotsData = d3.range(numDots).map(function (d) {
-  // Random positions for each dot
-  const x = Math.random() * 7.5;
-  const y = Math.random() * 200;
-  // Control the density of the dots here
-  // For example, fewer dots in the bottom-right corner
-  const density = Math.random() * (1 - y / height) * (1 - x / width);
-  return { x, y, density };
-});
-
-// Create and place the dots on the SVG element
-svg
-  .selectAll("circle")
-  .data(dotsData)
-  .enter()
-  .append("circle")
-  .attr("cx", (d) => d.x + width / 2)
-  .attr("cy", (d) => d.y + height / 2)
-  .attr("r", 0.5) // The radius of the dots
-  .style("fill", "black")
-  .style("opacity", (d) => d.density);
-
+// Draw vertices
 // svg
-//   .selectAll("circle")
-//   .data(dotsData)
+//   .selectAll("circle.vertex")
+//   .data(set1.vertices)
 //   .enter()
 //   .append("circle")
-//   .attr("cx", (d) => d.xwidth / 2)
-//   .attr("cy", (d) => d.y + 100 + height / 2)
-//   .attr("r", 0.5) // The radius of the dots
-//   .style("fill", "black")
+//   .attr("class", "vertex") // Assign a class for styling and selection
+//   .attr("cx", (d) => d.x + width / 2)
+//   .attr("cy", (d) => d.y)
+//   .attr("r", 2) // Larger radius for visibility
+//   .style("fill", "red");
 //   .style("opacity", (d) => d.density);
+
+const gridSpacing = 20; // Distance between grid lines
+const gridWidth = width; // Grid width
+const gridHeight = height; // Grid height
+
+const numVerticalLines = Math.floor(gridWidth / gridSpacing);
+const numHorizontalLines = Math.floor(gridHeight / gridSpacing);
+
+console.log("vertical lines", numVerticalLines);
+console.log("horizontal lines", numHorizontalLines);
+
+svg
+  .selectAll(".vertical-line")
+  .data(d3.range(numVerticalLines))
+  .enter()
+  .append("line")
+  .attr("class", "vertical-line")
+  .attr("x1", (d) => d * gridSpacing)
+  .attr("x2", (d) => d * gridSpacing)
+  .attr("y1", 0)
+  .attr("y2", gridHeight)
+  .attr("stroke", "#ccc")
+  .attr("stroke-width", 1);
+
+svg
+  .selectAll(".horizontal-line")
+  .data(d3.range(numHorizontalLines))
+  .enter()
+  .append("line")
+  .attr("class", "horizontal-line")
+  .attr("y1", (d) => d * gridSpacing)
+  .attr("y2", (d) => d * gridSpacing)
+  .attr("x1", 0)
+  .attr("x2", gridWidth)
+  .attr("stroke", "#ccc")
+  .attr("stroke-width", 1);
+
+mapReplica(svg, width, height);
