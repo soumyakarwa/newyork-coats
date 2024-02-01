@@ -3,11 +3,11 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { createRandomDots } from "./lines.js";
 
-export function mapReplica(svg) {
-  drawAvenues(svg);
+export function mapReplica(group) {
+  drawAvenues(group);
 }
 
-function drawAvenues(svg) {
+function drawAvenues(group) {
   //   const set1 = createRandomDots(26000, 15, 483, 38);
   const set1 = createRandomDots(30000, 15, 700, 49.4);
   // 49.4);
@@ -15,7 +15,14 @@ function drawAvenues(svg) {
   const set3 = createRandomDots(35000, 16, 540, 9.45);
   const set4 = createRandomDots(25000, 13, 550, 142.1);
 
-  svg
+  // streets
+  const set5 = createRandomDots(20000, 5, 1000, 107.93);
+  const set6 = createRandomDots(20000, 5, 1200, 107.93);
+  const set7 = createRandomDots(20000, 5, 1200, 107.93);
+  const set8 = createRandomDots(20000, 5, 1200, 107.93);
+  const set9 = createRandomDots(20000, 5, 1200, 107.93);
+
+  group
     .selectAll("circle.dot1")
     .data(set1.dots)
     .enter()
@@ -26,7 +33,7 @@ function drawAvenues(svg) {
     .attr("r", 0.5)
     .style("fill", "black")
     .style("opacity", (d) => d.density);
-  svg
+  group
     .selectAll("circle.dot2")
     .data(set2.dots)
     .enter()
@@ -37,7 +44,7 @@ function drawAvenues(svg) {
     .attr("r", 0.5)
     .style("fill", "black")
     .style("opacity", (d) => d.density);
-  svg
+  group
     .selectAll("circle.dot3")
     .data(set3.dots)
     .enter()
@@ -49,7 +56,7 @@ function drawAvenues(svg) {
     .style("fill", "black")
     .style("opacity", (d) => d.density);
 
-  svg
+  group
     .selectAll("circle.dot4")
     .data(set4.dots)
     .enter()
@@ -57,6 +64,63 @@ function drawAvenues(svg) {
     .attr("class", "dot") // Assign a class for styling and selection
     .attr("cx", (d) => d.x + 1150)
     .attr("cy", (d) => d.y + 90)
+    .attr("r", 0.5)
+    .style("fill", "black")
+    .style("opacity", (d) => d.density);
+
+  // streetss
+  group
+    .selectAll("circle.dot5")
+    .data(set5.dots)
+    .enter()
+    .append("circle")
+    .attr("class", "dot") // Assign a class for styling and selection
+    .attr("cx", (d) => d.x + 700)
+    .attr("cy", (d) => d.y - 350)
+    .attr("r", 0.5)
+    .style("fill", "black")
+    .style("opacity", (d) => d.density);
+  group
+    .selectAll("circle.dot6")
+    .data(set6.dots)
+    .enter()
+    .append("circle")
+    .attr("class", "dot") // Assign a class for styling and selection
+    .attr("cx", (d) => d.x + 700)
+    .attr("cy", (d) => d.y - 400)
+    .attr("r", 0.5)
+    .style("fill", "black")
+    .style("opacity", (d) => d.density);
+  group
+    .selectAll("circle.dot7")
+    .data(set7.dots)
+    .enter()
+    .append("circle")
+    .attr("class", "dot") // Assign a class for styling and selection
+    .attr("cx", (d) => d.x + 700)
+    .attr("cy", (d) => d.y - 350)
+    .attr("r", 0.5)
+    .style("fill", "black")
+    .style("opacity", (d) => d.density);
+  group
+    .selectAll("circle.dot8")
+    .data(set8.dots)
+    .enter()
+    .append("circle")
+    .attr("class", "dot") // Assign a class for styling and selection
+    .attr("cx", (d) => d.x + 700)
+    .attr("cy", (d) => d.y - 300)
+    .attr("r", 0.5)
+    .style("fill", "black")
+    .style("opacity", (d) => d.density);
+  group
+    .selectAll("circle.dot9")
+    .data(set9.dots)
+    .enter()
+    .append("circle")
+    .attr("class", "dot") // Assign a class for styling and selection
+    .attr("cx", (d) => d.x + 700)
+    .attr("cy", (d) => d.y - 250)
     .attr("r", 0.5)
     .style("fill", "black")
     .style("opacity", (d) => d.density);

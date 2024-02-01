@@ -60,4 +60,6 @@ svg
   .attr("stroke", "#ccc")
   .attr("stroke-width", 1);
 
-mapReplica(svg, width, height);
+const group = svg.append("g");
+
+mapReplica(group);
