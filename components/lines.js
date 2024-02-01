@@ -1,6 +1,5 @@
 // Lines.js
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import * as d3Polygon from "https://d3js.org/d3-polygon.v1.min.js";
 // import d3Polygon from "d3-polygon";
 
 /**
@@ -74,61 +73,44 @@ export function createRandomDots(
   return { dots: dotsData, vertices: vertices };
 }
 
-// /**
-//  * Create dots within a polygon defined by vertices.
-//  * @param {*} numberOfDots
-//  * @param {*} vertices Array of vertices defining the polygon [{x, y}, {x, y}, ...]
-//  * @returns dots within the polygon
-//  */
-// export function createRandomDotsInPolygon(numberOfDots, vertices) {
-//   const maxDensity = 1; // Maximum density for dots
+/**
+ * Create dots within a polygon defined by vertices.
+ * @param {*} numberOfDots
+ * @param {*} vertices Array of vertices defining the polygon [{x, y}, {x, y}, ...]
+ * @returns dots within the polygon
+ */
+export function createRandomDotsInPolygon(numberOfDots, vertices) {
+  const maxDensity = 0.9; // Maximum density for dots
 
-//   // Calculate bounding box
-//   const xs = vertices.map((v) => v.x);
-//   const ys = vertices.map((v) => v.y);
-//   const minX = Math.min(...xs);
-//   const maxX = Math.max(...xs);
-//   const minY = Math.min(...ys);
-//   const maxY = Math.max(...ys);
+  // Calculate bounding box
+  const xs = vertices.map((v) => v[0]);
+  const ys = vertices.map((v) => v[1]);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
 
-//   const dotsData = d3.range(numberOfDots).map(function () {
-//     // Generate random positions within the bounding box
-//     let x = Math.random() * (maxX - minX) + minX;
-//     let y = Math.random() * (maxY - minY) + minY;
-//     let density = Math.random() * maxDensity;
+  const dotsData = d3
+    .range(numberOfDots)
+    .map(function () {
+      // Generate random positions within the bounding box
+      let x = Math.random() * (maxX - minX) + minX;
+      let y = Math.random() * (maxY - minY) + minY;
+      let density = Math.random() * maxDensity;
 
-//     // Check if the point is inside the polygon (the rotated rectangle)
-//     if (isPointInPolygon([x, y], vertices)) {
-//       console.log("inside");
-//       return { x, y, density };
-//     }
+      // Check if the point is inside the polygon (the rotated rectangle)
+      if (d3.polygonContains(vertices, [x, y])) {
+        console.log("inside");
+        return { x, y, density };
+      }
 
-//     return null;
-//   });
-//   // .filter((dot) => dot !== null);
-//   //   .filter((dot) => dot !== null); // Filter out points that are not inside the polygon
+      return null;
+    })
+    .filter((dot) => dot !== null);
+  //   .filter((dot) => dot !== null); // Filter out points that are not inside the polygon
 
-//   return dotsData;
-// }
-
-// function isPointInPolygon(point, polygon) {
-//   let x = point[0],
-//     y = point[1];
-
-//   let inside = false;
-//   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-//     let xi = polygon[i][0],
-//       yi = polygon[i][1];
-//     let xj = polygon[j][0],
-//       yj = polygon[j][1];
-
-//     let intersect =
-//       yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
-//     if (intersect) inside = !inside;
-//   }
-
-//   return inside;
-// }
+  return dotsData;
+}
 
 // // Usage:
 // const vertices = [

@@ -24,37 +24,38 @@ const svg = d3
 //   .style("fill", "red");
 //   .style("opacity", (d) => d.density);
 
-const gridSpacing = 20; // Distance between grid lines
+// const gridSpacing = 20; // Distance between grid lines
 const gridWidth = width; // Grid width
 const gridHeight = height; // Grid height
 
-const numVerticalLines = Math.floor(gridWidth / gridSpacing);
-const numHorizontalLines = Math.floor(gridHeight / gridSpacing);
+const numVerticalLines = 53; // Number of vertical lines
+const numHorizontalLines = 37; // Number of horizontal lines
+export const verticalGridSpacing = gridWidth / numVerticalLines;
+export const horizontalGridSpacing = gridHeight / numHorizontalLines;
 
-console.log("vertical lines", numVerticalLines);
-console.log("horizontal lines", numHorizontalLines);
-
+// Draw vertical lines
 svg
   .selectAll(".vertical-line")
-  .data(d3.range(numVerticalLines))
+  .data(d3.range(numVerticalLines + 1)) // +1 to include the last line
   .enter()
   .append("line")
   .attr("class", "vertical-line")
-  .attr("x1", (d) => d * gridSpacing)
-  .attr("x2", (d) => d * gridSpacing)
+  .attr("x1", (d) => d * verticalGridSpacing)
+  .attr("x2", (d) => d * verticalGridSpacing)
   .attr("y1", 0)
   .attr("y2", gridHeight)
   .attr("stroke", "#ccc")
   .attr("stroke-width", 1);
 
+// Draw horizontal lines
 svg
   .selectAll(".horizontal-line")
-  .data(d3.range(numHorizontalLines))
+  .data(d3.range(numHorizontalLines + 1)) // +1 to include the last line
   .enter()
   .append("line")
   .attr("class", "horizontal-line")
-  .attr("y1", (d) => d * gridSpacing)
-  .attr("y2", (d) => d * gridSpacing)
+  .attr("y1", (d) => d * horizontalGridSpacing)
+  .attr("y2", (d) => d * horizontalGridSpacing)
   .attr("x1", 0)
   .attr("x2", gridWidth)
   .attr("stroke", "#ccc")
