@@ -1,77 +1,5 @@
 // Lines.js
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-// import d3Polygon from "d3-polygon";
-
-/**
- *
- * @param {*} numberOfDots
- * @param {*} w
- * @param {*} h
- * @param {*} angle
- * @param {*} centerX
- * @param {*} centerY
- * @returns dots, vertices
- * This function creates a pencil like texture by generating numberOfDots number
- * of dots in random places in the w and h of a rectangle.
- */
-export function createRandomDots(
-  numberOfDots,
-  w,
-  h,
-  angle = 0,
-  centerX = w / 2,
-  centerY = h / 2
-) {
-  //   const fadeHeight = 4; // Height of the fading effect from the top and bottom edges
-  const maxDensity = 1; // Maximum density for dots away from the edges
-  const radians = (angle * Math.PI) / 180; // Convert angle to radians
-
-  const dotsData = d3.range(numberOfDots).map(function () {
-    // Random positions for each dot
-    let x = Math.random() * w;
-    let y = Math.random() * h;
-
-    // Apply rotation around the center (centerX, centerY)
-    if (angle != 0) {
-      const xRotated =
-        centerX +
-        (x - centerX) * Math.cos(radians) -
-        (y - centerY) * Math.sin(radians);
-      const yRotated =
-        centerY +
-        (x - centerX) * Math.sin(radians) +
-        (y - centerY) * Math.cos(radians);
-      x = xRotated;
-      y = yRotated;
-    }
-
-    // Calculate density based on y position for the fading effect
-    let density = Math.random() * maxDensity;
-
-    return { x, y, density };
-  });
-
-  // Calculate the coordinates of the four vertices after rotation
-  const vertices = [
-    { x: 0, y: 0 }, // top-left
-    { x: w, y: 0 }, // top-right
-    { x: w, y: h }, // bottom-right
-    { x: 0, y: h }, // bottom-left
-  ].map((vertex) => {
-    const xRotated =
-      centerX +
-      (vertex.x - centerX) * Math.cos(radians) -
-      (vertex.y - centerY) * Math.sin(radians);
-    const yRotated =
-      centerY +
-      (vertex.x - centerX) * Math.sin(radians) +
-      (vertex.y - centerY) * Math.cos(radians);
-    return { x: xRotated, y: yRotated };
-  });
-
-  // Return both the dots and the vertices
-  return { dots: dotsData, vertices: vertices };
-}
 
 /**
  * Create dots within a polygon defined by vertices.
@@ -100,25 +28,44 @@ export function createRandomDotsInPolygon(numberOfDots, vertices) {
 
       // Check if the point is inside the polygon (the rotated rectangle)
       if (d3.polygonContains(vertices, [x, y])) {
-        console.log("inside");
         return { x, y, density };
       }
 
       return null;
     })
     .filter((dot) => dot !== null);
-  //   .filter((dot) => dot !== null); // Filter out points that are not inside the polygon
 
   return dotsData;
 }
 
-// // Usage:
-// const vertices = [
-//   [100, 100],
-//   [200, 150],
-//   [250, 300],
-//   [150, 350],
-// ];
+/**
+ *
+ * @param {*} numberOfDots
+ * @param {*} cx
+ * @param {*} cy
+ * @param {*} rx
+ * @param {*} ry
+ * @returns
+ */
+export function createRandomDotsInEllipse(numberOfDots, cx, cy, rx, ry) {
+  const maxDensity = 0.9;
+  const minDensity = 0.4;
+  const dotsData = [];
 
-// const testPoint = [150, 200];
-// console.log(isPointInPolygon(testPoint, vertices)); // Returns true or false
+  for (let i = 0; i < numberOfDots; i++) {
+    // Generate a random angle between 0 and 2π
+    const angle = Math.random() * 2 * Math.PI;
+    // Generate a random radius within the ellipse bounds for both axes
+    const rX = Math.sqrt(Math.random()) * rx;
+    const rY = Math.sqrt(Math.random()) * ry;
+
+    // Calculate the dot's coordinates
+    const x = cx + rX * Math.cos(angle);
+    const y = cy + rY * Math.sin(angle);
+    const density = minDensity + Math.random() * (maxDensity - minDensity);
+
+    dotsData.push({ x, y, density });
+  }
+
+  return dotsData;
+}
