@@ -83,7 +83,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .attr("x", 0)
     .attr("y", 0)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "13px")
+    .style("font-size", "14px")
     .style("font-family", "Sprat-Medium")
     .style("fill", Constants.greyColor)
     .text(streetName);
@@ -94,7 +94,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .append("tspan")
     .attr("baseline-shift", "super")
     .style("font-family", "Sprat-Medium")
-    .attr("font-size", "9px")
+    .attr("font-size", "10.5px")
     .style("fill", Constants.greyColor)
-    .text("ST");
+    .text("st");
 }
