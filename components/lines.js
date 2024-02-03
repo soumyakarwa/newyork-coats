@@ -8,7 +8,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
  * @returns dots within the polygon
  */
 export function createRandomDotsInPolygon(numberOfDots, vertices) {
-  const maxDensity = 0.9; // Maximum density for dots
+  const maxDensity = 0.7; // Maximum density for dots
 
   // Calculate bounding box
   const xs = vertices.map((v) => v[0]);

@@ -2,4 +2,20 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
+  font-family: "Sprat-Regular";
+}
+
+@font-face {
+  font-family: "Prociono-Regular";
+  src: url("./assets/fonts/prociono/Prociono.otf");
+}
+
+@font-face {
+  font-family: "Sprat-Regular";
+  src: url("./assets/fonts/CLT-Sprat/web/Sprat-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Sprat-Medium";
+  src: url("./assets/fonts/CLT-Sprat/web/Sprat-Medium.woff2");
 }

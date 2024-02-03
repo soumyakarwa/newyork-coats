@@ -2,6 +2,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { mapReplica } from "./components/map.js";
 import * as Constants from "./components/constants.js";
 import { drawCoatsAlongStreet } from "./components/coats.js";
+import { placeStreetLabel } from "./components/labels.js";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -48,7 +49,8 @@ export const horizontalGridSpacing = gridHeight / Constants.numHorizontalLines;
 
 const mapGroup = svg.append("g");
 const coatGroup = svg.append("g");
+const labelsGroup = svg.append("g");
 
-mapReplica(mapGroup);
+mapReplica(mapGroup, labelsGroup);
 
 drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);

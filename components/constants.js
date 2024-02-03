@@ -93,7 +93,10 @@ export const streets = {
 export const roadEllipseSize = 2.2;
 export const coatEllipseSize = 1.2;
 
-export const coatRx = 9;
+export const coatRx = 7;
 export const coatRy = 14;
 
 export const coatEllipseNumber = 750;
+
+// export const greyColor = "#333F47";
+export const greyColor = "#484848";
