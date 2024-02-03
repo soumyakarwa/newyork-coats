@@ -1,7 +1,7 @@
 // Map.js
 import { createRandomDotsInPolygon } from "./lines.js";
 import { convertingVerticesSet } from "./util.js";
-import { placeStreetLabel } from "./labels.js";
+import { placeStreetLabel, placeAvenueLabel } from "./labels.js";
 
 import * as Constants from "./constants.js";
 
@@ -15,6 +15,11 @@ export function mapReplica(mapGroup, labelsGroup) {
     const streetName = `${streetNumber}`;
     placeStreetLabel(labelsGroup, streetCoordinates, streetName);
   });
+
+  placeAvenueLabel(labelsGroup, Constants.sixthAve, "Sixth Ave");
+  placeAvenueLabel(labelsGroup, Constants.fifthAve, "Fifth Ave");
+  placeAvenueLabel(labelsGroup, Constants.broadwayAve, "Broadway");
+  placeAvenueLabel(labelsGroup, Constants.uniPlacePt1, "Univerity Pl");
 }
 
 function drawAvenues(group) {

@@ -100,3 +100,4 @@ export const coatEllipseNumber = 750;
 
 // export const greyColor = "#333F47";
 export const greyColor = "#484848";
+export const greenColor = "#629460";
