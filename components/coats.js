@@ -17,15 +17,22 @@ export function drawCoatsAlongStreet(group, coats, streets) {
 
     if (yPosition !== null) {
       const [finalX, finalY] = gridToSvgCoordinates(coat.X, yPosition);
-      drawCoat(
-        group,
-        Constants.coatEllipseNumber,
-        finalX,
-        finalY,
-        Constants.coatRx,
-        Constants.coatRy,
-        coat.ColorHex
-      );
+      // drawCoat(
+      //   group,
+      //   Constants.coatEllipseNumber,
+      //   finalX,
+      //   finalY,
+      //   Constants.coatRx,
+      //   Constants.coatRy,
+      //   coat.ColorHex
+      // );
+      group
+        .append("ellipse")
+        .attr("cx", finalX)
+        .attr("cy", finalY)
+        .attr("rx", Constants.coatRx)
+        .attr("ry", Constants.coatRy)
+        .attr("fill", coat.ColorHex);
     } else {
       console.error(
         `Could not find y-position for coat at x=${coat.x} on street ${coat.street}`

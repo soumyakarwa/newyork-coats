@@ -40,15 +40,21 @@ function drawRoad(vertices, group, numberOfDots) {
 
   var dots = createRandomDotsInPolygon(numberOfDots, vertices);
 
+  // group
+  //   .selectAll("avenue1")
+  //   .data(dots)
+  //   .enter()
+  //   .append("circle")
+  //   .attr("class", "dot")
+  //   .attr("cx", (d) => d.x)
+  //   .attr("cy", (d) => d.y)
+  //   .attr("r", Constants.roadEllipseSize)
+  //   .style("fill", Constants.greyColor)
+  //   .style("opacity", (d) => d.density);
   group
-    .selectAll("avenue1")
-    .data(dots)
-    .enter()
-    .append("circle")
-    .attr("class", "dot")
-    .attr("cx", (d) => d.x)
-    .attr("cy", (d) => d.y)
-    .attr("r", Constants.roadEllipseSize)
-    .style("fill", Constants.greyColor)
-    .style("opacity", (d) => d.density);
+    .append("polygon")
+    .attr("points", vertices)
+    .style("fill", Constants.greyColor); // Use your defined grey color
+  // .style("stroke", "black") // Set the color of the border of the polygon
+  // .style("stroke-width", 1);
 }
