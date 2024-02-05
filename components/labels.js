@@ -82,17 +82,17 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .attr("x", 0)
     .attr("y", 0)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "16px")
-    .style("fill", Constants.greenColor)
-    .text(streetName);
+    .style("font-size", "1rem")
+    .style("fill", Constants.roadColor)
+    .text(`W ${streetName}`);
 
   // If "ST" needs to be a superscript, append a tspan for it
   textGroup
     .select("text")
     .append("tspan")
     .attr("baseline-shift", "super")
-    .attr("font-size", "11px")
-    .style("fill", Constants.greenColor)
+    .attr("font-size", "0.75rem")
+    .style("fill", Constants.roadColor)
     .text("st");
 }
 
@@ -107,7 +107,7 @@ export function placeAvenueLabel(group, avenueCoordinates, avenueName) {
     .attr("x", finalX)
     .attr("y", finalY)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "16px")
-    .style("fill", Constants.greenColor)
+    .style("font-size", "1rem")
+    .style("fill", Constants.roadColor)
     .text(avenueName);
 }

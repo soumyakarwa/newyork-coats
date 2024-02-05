@@ -99,8 +99,8 @@ export const coatRy = 18;
 export const coatEllipseNumber = 38;
 
 // export const greyColor = "#333F47";
-export const greyColor = "#484848";
-export const greenColor = "#629460";
+export const roadColor = "#FFFFF0";
+export const labelColor = "#00A676";
 
 // coat colors
 export const greyCoat = "#515052";
@@ -136,3 +136,19 @@ data.forEach((coat) => {
   }
   coatsByColor.get(color).push(coat);
 });
+
+export const descriptions = {
+  Beige: "Description for Beige. Lorem ipsum dolor sit amet...",
+  Blue: "Description for Blue. Lorem ipsum dolor sit amet...",
+  Brown: "Description for Brown. Lorem ipsum dolor sit amet...",
+  Grey: "Description for Grey. Lorem ipsum dolor sit amet...",
+  Black: "Description for Black. Lorem ipsum dolor sit amet...",
+  Green: "Description for Green. Lorem ipsum dolor sit amet...",
+  White: "Description for White. Lorem ipsum dolor sit amet...",
+  Red: "Description for Red. Lorem ipsum dolor sit amet...",
+  Pink: "Description for Pink. Lorem ipsum dolor sit amet...",
+  // ... more colors if necessary
+};
+
+export const defaultDescription =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque eget dapibus dui. Sed gravida pretium porttitor. Vestibulum faucibus lacus a erat mollis, id tempor elit ultricies. Maecenas sit amet velit at lectus accumsan pellentesque vel uttellus. Aenean sodales laoreet pellentesque. Nunc ex ex, vulputate quis ante at, porta semper tellus. Sed ut consectetur risus. Nullam sed vestibulum ligula....";

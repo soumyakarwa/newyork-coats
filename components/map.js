@@ -18,7 +18,7 @@ export function mapReplica(mapGroup, labelsGroup) {
 
   placeAvenueLabel(labelsGroup, Constants.sixthAve, "Sixth Ave");
   placeAvenueLabel(labelsGroup, Constants.fifthAve, "Fifth Ave");
-  placeAvenueLabel(labelsGroup, Constants.universityPl, "University Pl");
+  placeAvenueLabel(labelsGroup, Constants.universityPl, "University Place");
   placeAvenueLabel(labelsGroup, Constants.broadwayPt1, "Broadway");
 }
 
@@ -42,5 +42,8 @@ function drawStreet(group) {
 
 function drawRoad(vertices, group, numberOfDots) {
   vertices = convertingVerticesSet(vertices);
-  group.append("polygon").attr("points", vertices).style("fill", "#FFFFF0");
+  group
+    .append("polygon")
+    .attr("points", vertices)
+    .style("fill", Constants.roadColor);
 }

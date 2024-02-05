@@ -1,12 +1,8 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { mapReplica } from "./components/map.js";
 import * as Constants from "./components/constants.js";
-import {
-  drawCoatsAlongStreet,
-  filterCoatsByColor,
-} from "./components/coats.js";
-// import { placeStreetLabel } from "./components/labels.js";
-import { gridToSvgCoordinates } from "./components/util.js";
+import { drawCoatsAlongStreet } from "./components/coats.js";
+import { dropdownFilter } from "./components/filter.js";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -43,7 +39,7 @@ export const horizontalGridSpacing = gridHeight / Constants.numHorizontalLines;
 //   .attr("stroke", "#ccc")
 //   .attr("stroke-width", 1);
 
-// // // Draw horizontal lines
+// Draw horizontal lines
 // svg
 //   .selectAll(".horizontal-line")
 //   .data(d3.range(Constants.numHorizontalLines + 1)) // +1 to include the last line
@@ -62,40 +58,5 @@ const coatGroup = svg.append("g");
 const labelsGroup = svg.append("g");
 
 mapReplica(mapGroup, labelsGroup);
-
 drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
-
-const [titleX1, titleY1] = gridToSvgCoordinates(31.5, 4);
-const [titleX2, titleY2] = gridToSvgCoordinates(37, 7.5);
-
-// svg
-//   .append("text")
-//   .attr("x", titleX1)
-//   .attr("y", titleY1)
-//   .style("text-anchor", "start") // Start the text at the beginning of the line
-//   .style("font-size", "72px")
-//   .style("font-family", "Sprat-Regular")
-//   .style("fill", Constants.greenColor)
-//   .text("New Coats,");
-
-// svg
-//   .append("text")
-//   .attr("x", titleX2)
-//   .attr("y", titleY2)
-//   .style("text-anchor", "start") // Start the text at the beginning of the line
-//   .style("font-size", "72px")
-//   .style("font-family", "Sprat-Regular")
-//   .style("fill", Constants.greenColor)
-//   .text("New York");
-
-const colorFilterSelect = d3.select("#color-filter");
-
-Constants.coatsByColor.forEach((_, color) => {
-  colorFilterSelect.append("option").attr("value", color).text(color);
-});
-
-d3.select("#color-filter").on("change", function () {
-  const selectedClass = d3.select(this).property("value");
-  console.log("Selected Color: ", selectedClass);
-  filterCoatsByColor(coatGroup, selectedClass);
-});
+dropdownFilter(coatGroup);

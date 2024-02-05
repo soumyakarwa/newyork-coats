@@ -80,19 +80,18 @@ export function filterCoatsByColor(group, selectedColor) {
 
   group
     .selectAll(".dot")
-    .transition() // Start a transition
-    .duration(transitionDuration) // Set its duration
-    .style("opacity", 0) // Start with 0 opacity for all
-    .transition() // Start another transition for opacity change
+    .transition()
+    .duration(transitionDuration)
+    .style("opacity", 0)
+    .transition()
     .duration(transitionDuration)
     .attr("r", (d) =>
       selectedColor === "all" || d.color === selectedColor ? defaultRadius : 0
-    ) // Change radius based on condition
+    )
     .style("opacity", (d) =>
       selectedColor === "all" || d.color === selectedColor ? 1 : 0
-    ) // Fade in if selected, fade out if not
+    )
     .on("start", function (d) {
-      // When the transition starts, set display to block if the dot should be visible
       d3.select(this).style(
         "display",
         selectedColor === "all" || d.color === selectedColor ? null : "none"
