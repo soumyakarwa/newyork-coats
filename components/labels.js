@@ -82,8 +82,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .attr("x", 0)
     .attr("y", 0)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "14px")
-    .style("font-family", "Sprat-Medium")
+    .style("font-size", "16px")
     .style("fill", Constants.greenColor)
     .text(streetName);
 
@@ -92,8 +91,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .select("text")
     .append("tspan")
     .attr("baseline-shift", "super")
-    .style("font-family", "Sprat-Medium")
-    .attr("font-size", "10.5px")
+    .attr("font-size", "11px")
     .style("fill", Constants.greenColor)
     .text("st");
 }
@@ -109,8 +107,7 @@ export function placeAvenueLabel(group, avenueCoordinates, avenueName) {
     .attr("x", finalX)
     .attr("y", finalY)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "14px")
-    .style("font-family", "Sprat-Medium")
+    .style("font-size", "16px")
     .style("fill", Constants.greenColor)
     .text(avenueName);
 }

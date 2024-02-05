@@ -42,21 +42,5 @@ function drawStreet(group) {
 
 function drawRoad(vertices, group, numberOfDots) {
   vertices = convertingVerticesSet(vertices);
-
-  var dots = createRandomDotsInPolygon(numberOfDots, vertices);
-
-  // group
-  //   .selectAll("avenue1")
-  //   .data(dots)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot")
-  //   .attr("cx", (d) => d.x)
-  //   .attr("cy", (d) => d.y)
-  //   .attr("r", Constants.roadEllipseSize)
-  //   .style("fill", Constants.greyColor)
-  //   .style("opacity", (d) => d.density);
-  group.append("polygon").attr("points", vertices).style("fill", "#FFFFF0"); // Use your defined grey color
-  // .style("stroke", "black") // Set the color of the border of the polygon
-  // .style("stroke-width", 1);
+  group.append("polygon").attr("points", vertices).style("fill", "#FFFFF0");
 }

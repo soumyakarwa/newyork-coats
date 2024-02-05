@@ -2,17 +2,47 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  font-family: "Sprat-Regular";
+  /* font-family: "Sprat-Regular"; */
+  font-family: "Fira-Sans-Regular";
   background-color: "#2C2C30";
+  /* overflow: hidden; */
+}
+.d3-container {
+  /* width: fit-content;
+  height: fit-content; */
+  position: relative; /* Add this line */
+}
+
+.text-container {
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  margin: 2rem;
 }
 
 .dropdown {
-  z-index: 10;
+  position: absolute;
+  top: calc(0.7 * 100vh);
+  left: 0;
+  background-color: transparent;
+  font-family: "Fira-Sans-Regular";
+  color: #fffff0;
+  border-color: #fffff0;
+  padding-left: 4px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-@font-face {
-  font-family: "Prociono-Regular";
-  src: url("./assets/fonts/prociono/Prociono.otf");
+.description {
+  color: #fffff0;
+  position: absolute;
+  top: calc(0.7 * 100vh + 2rem);
+  left: 0.5px;
+  font-size: 14px;
+  max-width: calc(0.3 * 100vw);
 }
 
 @font-face {
@@ -23,4 +53,14 @@ body {
 @font-face {
   font-family: "Sprat-Medium";
   src: url("./assets/fonts/CLT-Sprat/web/Sprat-Medium.woff2");
+}
+
+@font-face {
+  font-family: "Fira-Sans-Regular";
+  src: url("./assets/fonts/Fira_Sans/FiraSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Fira-Sans-Medium";
+  src: url("./assets/fonts/Fira_Sans/FiraSans-Medium.ttf");
 }

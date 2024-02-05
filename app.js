@@ -5,14 +5,14 @@ import {
   drawCoatsAlongStreet,
   filterCoatsByColor,
 } from "./components/coats.js";
-import { placeStreetLabel } from "./components/labels.js";
+// import { placeStreetLabel } from "./components/labels.js";
 import { gridToSvgCoordinates } from "./components/util.js";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
 
 const svg = d3
-  .select("body")
+  .select(".d3-container")
   .append("svg")
   .attr("width", width)
   .attr("height", height);
