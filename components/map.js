@@ -1,7 +1,7 @@
 // Map.js
 import { createRandomDotsInPolygon } from "./lines.js";
 import { convertingVerticesSet } from "./util.js";
-import { placeStreetLabel } from "./labels.js";
+import { placeStreetLabel, placeAvenueLabel } from "./labels.js";
 
 import * as Constants from "./constants.js";
 
@@ -15,14 +15,19 @@ export function mapReplica(mapGroup, labelsGroup) {
     const streetName = `${streetNumber}`;
     placeStreetLabel(labelsGroup, streetCoordinates, streetName);
   });
+
+  placeAvenueLabel(labelsGroup, Constants.sixthAve, "Sixth Ave");
+  placeAvenueLabel(labelsGroup, Constants.fifthAve, "Fifth Ave");
+  placeAvenueLabel(labelsGroup, Constants.universityPl, "University Pl");
+  placeAvenueLabel(labelsGroup, Constants.broadwayPt1, "Broadway");
 }
 
 function drawAvenues(group) {
   drawRoad(Constants.sixthAve, group, 45000);
   drawRoad(Constants.fifthAve, group, 30000);
-  drawRoad(Constants.broadwayAve, group, 40000);
-  drawRoad(Constants.uniPlacePt1, group, 45000);
-  drawRoad(Constants.uniPlacePt2, group, 3000);
+  drawRoad(Constants.universityPl, group, 40000);
+  drawRoad(Constants.broadwayPt1, group, 45000);
+  drawRoad(Constants.broadwayPt2, group, 3000);
 }
 
 function drawStreet(group) {
@@ -40,15 +45,18 @@ function drawRoad(vertices, group, numberOfDots) {
 
   var dots = createRandomDotsInPolygon(numberOfDots, vertices);
 
-  group
-    .selectAll("avenue1")
-    .data(dots)
-    .enter()
-    .append("circle")
-    .attr("class", "dot")
-    .attr("cx", (d) => d.x)
-    .attr("cy", (d) => d.y)
-    .attr("r", Constants.roadEllipseSize)
-    .style("fill", Constants.greyColor)
-    .style("opacity", (d) => d.density);
+  // group
+  //   .selectAll("avenue1")
+  //   .data(dots)
+  //   .enter()
+  //   .append("circle")
+  //   .attr("class", "dot")
+  //   .attr("cx", (d) => d.x)
+  //   .attr("cy", (d) => d.y)
+  //   .attr("r", Constants.roadEllipseSize)
+  //   .style("fill", Constants.greyColor)
+  //   .style("opacity", (d) => d.density);
+  group.append("polygon").attr("points", vertices).style("fill", "#FFFFF0"); // Use your defined grey color
+  // .style("stroke", "black") // Set the color of the border of the polygon
+  // .style("stroke-width", 1);
 }

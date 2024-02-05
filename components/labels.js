@@ -1,5 +1,4 @@
 // labels.js
-
 import { gridToSvgCoordinates } from "./util.js";
 import * as Constants from "./constants.js";
 
@@ -83,9 +82,9 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .attr("x", 0)
     .attr("y", 0)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "13px")
+    .style("font-size", "14px")
     .style("font-family", "Sprat-Medium")
-    .style("fill", Constants.greyColor)
+    .style("fill", Constants.greenColor)
     .text(streetName);
 
   // If "ST" needs to be a superscript, append a tspan for it
@@ -94,7 +93,24 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .append("tspan")
     .attr("baseline-shift", "super")
     .style("font-family", "Sprat-Medium")
-    .attr("font-size", "9px")
-    .style("fill", Constants.greyColor)
-    .text("ST");
+    .attr("font-size", "10.5px")
+    .style("fill", Constants.greenColor)
+    .text("st");
+}
+
+export function placeAvenueLabel(group, avenueCoordinates, avenueName) {
+  const [finalX, finalY] = gridToSvgCoordinates(
+    avenueCoordinates[3][0] + 0.5,
+    avenueCoordinates[3][1]
+  );
+
+  group
+    .append("text")
+    .attr("x", finalX)
+    .attr("y", finalY)
+    .style("text-anchor", "start") // Start the text at the beginning of the line
+    .style("font-size", "14px")
+    .style("font-family", "Sprat-Medium")
+    .style("fill", Constants.greenColor)
+    .text(avenueName);
 }
