@@ -3,6 +3,7 @@ import { mapReplica } from "./components/map.js";
 import * as Constants from "./components/constants.js";
 import { drawCoatsAlongStreet } from "./components/coats.js";
 import { dropdownFilter } from "./components/filter.js";
+import { gridToSvgCoordinates } from "./components/util.js";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -39,7 +40,7 @@ export const horizontalGridSpacing = gridHeight / Constants.numHorizontalLines;
 //   .attr("stroke", "#ccc")
 //   .attr("stroke-width", 1);
 
-// Draw horizontal lines
+// // Draw horizontal lines
 // svg
 //   .selectAll(".horizontal-line")
 //   .data(d3.range(Constants.numHorizontalLines + 1)) // +1 to include the last line
@@ -53,10 +54,30 @@ export const horizontalGridSpacing = gridHeight / Constants.numHorizontalLines;
 //   .attr("stroke", "#ccc")
 //   .attr("stroke-width", 1);
 
-const mapGroup = svg.append("g");
-const coatGroup = svg.append("g");
-const labelsGroup = svg.append("g");
+// const mapGroup = svg.append("g");
+// const coatGroup = svg.append("g");
+// const labelsGroup = svg.append("g");
 
+// mapReplica(mapGroup, labelsGroup);
+// drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
+// dropdownFilter(coatGroup);
+
+const xloc = 18;
+const yloc = 10;
+
+const [finalX, finalY] = gridToSvgCoordinates(xloc, yloc);
+
+// Create a parent group for all visualization components
+const visualizationGroup = svg
+  .append("g")
+  .attr("transform", `translate(${finalX}, ${finalY}) scale(0.66)`);
+
+// Append your groups to the visualizationGroup instead of directly to svg
+const mapGroup = visualizationGroup.append("g");
+const coatGroup = visualizationGroup.append("g");
+const labelsGroup = visualizationGroup.append("g");
+
+// Continue as before
 mapReplica(mapGroup, labelsGroup);
 drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
 dropdownFilter(coatGroup);
