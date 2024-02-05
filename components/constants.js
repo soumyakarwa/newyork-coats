@@ -18,19 +18,19 @@ export const fifthAve = [
   [32, 8.2],
   [31.5, 7.8],
 ];
-export const broadwayAve = [
+export const universityPl = [
   [36.3, 30],
   [36.8, 30],
   [41.5, 12],
   [41.2, 11.2],
 ];
-export const uniPlacePt1 = [
-  [36.7, 11.2],
-  [35.9, 10.8],
+export const broadwayPt1 = [
   [51.5, 28.8],
   [52, 28.5],
+  [36.7, 11.2],
+  [35.9, 10.8],
 ];
-export const uniPlacePt2 = [
+export const broadwayPt2 = [
   [51.5, 28.8],
   [52, 28.5],
   [53, 37],
@@ -91,13 +91,48 @@ export const streets = {
 };
 
 export const roadEllipseSize = 2.2;
-export const coatEllipseSize = 1.2;
+export const coatEllipseSize = 4.5;
 
-export const coatRx = 7;
-export const coatRy = 14;
+export const coatRx = 9;
+export const coatRy = 18;
 
-export const coatEllipseNumber = 750;
+export const coatEllipseNumber = 38;
 
 // export const greyColor = "#333F47";
 export const greyColor = "#484848";
 export const greenColor = "#629460";
+
+// coat colors
+export const greyCoat = "#515052";
+// export const redCoat = "#C57556";
+export const redCoat = "#C03221";
+export const whiteCoat = "#EBE6DF";
+export const blueCoat = "#2188A8";
+export const greenCoat = "#60966B";
+// export const beigeCoat = "#D1A768";
+export const beigeCoat = "#F2E0A6";
+export const pinkCoat = "#C18EA3";
+export const blackCoat = "#1A1A1A";
+export const brownCoat = "#925544";
+
+export const dataColors = {
+  Grey: greyCoat,
+  Red: redCoat,
+  White: whiteCoat,
+  Blue: blueCoat,
+  Green: greenCoat,
+  Beige: beigeCoat,
+  Pink: pinkCoat,
+  Black: blackCoat,
+  Brown: brownCoat,
+};
+
+export const coatsByColor = new Map();
+
+data.forEach((coat) => {
+  const color = coat.ColorName;
+  if (!coatsByColor.has(color)) {
+    coatsByColor.set(color, []);
+  }
+  coatsByColor.get(color).push(coat);
+});

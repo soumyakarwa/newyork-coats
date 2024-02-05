@@ -18,16 +18,16 @@ export function mapReplica(mapGroup, labelsGroup) {
 
   placeAvenueLabel(labelsGroup, Constants.sixthAve, "Sixth Ave");
   placeAvenueLabel(labelsGroup, Constants.fifthAve, "Fifth Ave");
-  placeAvenueLabel(labelsGroup, Constants.broadwayAve, "Broadway");
-  placeAvenueLabel(labelsGroup, Constants.uniPlacePt1, "Univerity Pl");
+  placeAvenueLabel(labelsGroup, Constants.universityPl, "University Pl");
+  placeAvenueLabel(labelsGroup, Constants.broadwayPt1, "Broadway");
 }
 
 function drawAvenues(group) {
   drawRoad(Constants.sixthAve, group, 45000);
   drawRoad(Constants.fifthAve, group, 30000);
-  drawRoad(Constants.broadwayAve, group, 40000);
-  drawRoad(Constants.uniPlacePt1, group, 45000);
-  drawRoad(Constants.uniPlacePt2, group, 3000);
+  drawRoad(Constants.universityPl, group, 40000);
+  drawRoad(Constants.broadwayPt1, group, 45000);
+  drawRoad(Constants.broadwayPt2, group, 3000);
 }
 
 function drawStreet(group) {
@@ -56,10 +56,7 @@ function drawRoad(vertices, group, numberOfDots) {
   //   .attr("r", Constants.roadEllipseSize)
   //   .style("fill", Constants.greyColor)
   //   .style("opacity", (d) => d.density);
-  group
-    .append("polygon")
-    .attr("points", vertices)
-    .style("fill", Constants.greyColor); // Use your defined grey color
+  group.append("polygon").attr("points", vertices).style("fill", "#FFFFF0"); // Use your defined grey color
   // .style("stroke", "black") // Set the color of the border of the polygon
   // .style("stroke-width", 1);
 }
