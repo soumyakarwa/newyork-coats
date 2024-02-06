@@ -6,15 +6,15 @@ import { dropdownFilter } from "./filter.js";
 import { gridToSvgCoordinates } from "./util.js";
 
 export function createVisualization(svg) {
-  const xloc = 16;
-  const yloc = 10;
+  const xloc = 13.5;
+  const yloc = 6;
 
   const [finalX, finalY] = gridToSvgCoordinates(xloc, yloc);
 
   // Create a parent group for all visualization components
   const visualizationGroup = svg
     .append("g")
-    .attr("transform", `translate(${finalX}, ${finalY}) scale(0.74)`);
+    .attr("transform", `translate(${finalX}, ${finalY}) scale(0.78)`);
 
   const mapGroup = visualizationGroup.append("g");
   const coatGroup = visualizationGroup.append("g");

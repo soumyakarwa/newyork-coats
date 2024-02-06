@@ -74,8 +74,8 @@ body {
   margin-left: auto;
   font-family: "Bodoni-Moda";
   font-weight: 500;
-  color: var(--dropdown);
-  border-color: var(--dropdown);
+  color: var(--text);
+  border-color: var(--text);
   border-width: 2px;
   padding-top: 2.5px;
   padding-left: 4px;
@@ -83,7 +83,7 @@ body {
   padding-bottom: 5px;
   cursor: pointer;
   width: 20%;
-  margin-top: calc(var(--margin) * 1.618 * 1.618 * 1.618);
+  margin-top: calc(var(--margin) * 1.618 * 1.618 * 1.618 * 1.618);
   align-items: flex-end;
   font-size: var(--dropdown-fontsize);
   background-color: transparent;
@@ -97,6 +97,8 @@ body {
 }
 
 .left-container {
+  background: var(--my-background-color-hex);
+  color: var(--text);
   transition: opacity 750ms;
   opacity: 1;
   position: absolute;
@@ -110,7 +112,7 @@ body {
 .image-container {
   position: absolute;
   bottom: calc(var(--margin) * 2);
-  left: calc(var(--margin) * 2);
+  left: 0;
   z-index: 9;
   width: 33.3%;
 }
@@ -133,16 +135,6 @@ body {
 }
 
 @font-face {
-  font-family: "Fira-Sans-Regular";
-  src: url("./assets/fonts/Fira_Sans/FiraSans-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Fira-Sans-Medium";
-  src: url("./assets/fonts/Fira_Sans/FiraSans-Medium.ttf");
-}
-
-@font-face {
   font-family: "Bodoni-Moda";
   src: url("./assets/fonts/Bodoni_Moda/BodoniModa-VariableFont_opsz\,wght.ttf");
 }
@@ -155,4 +147,40 @@ body {
 @font-face {
   font-family: "PT-Sans";
   src: url("./assets/fonts/PT_Sans/PTSans-Regular.ttf");
+}
+
+/* Fade-out animation */
+.fade-out {
+  animation: fadeOut 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeIn 0.5s;
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
