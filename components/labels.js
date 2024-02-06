@@ -70,7 +70,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
   // Calculate the angle of the line segment relative to the horizontal
   const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI); // Convert to degrees
 
-  const [finalX, finalY] = gridToSvgCoordinates(x1, y1 - 0.5);
+  const [finalX, finalY] = gridToSvgCoordinates(x1 - 0.75, y1 - 0.75);
   // Create a group for the text to apply the rotation
   const textGroup = group
     .append("g")
@@ -82,7 +82,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .attr("x", 0)
     .attr("y", 0)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "1rem")
+    .style("font-size", Constants.labelSize)
     .style("fill", Constants.roadColor)
     .text(`W ${streetName}`);
 
@@ -91,7 +91,7 @@ export function placeStreetLabel(group, streetCoordinates, streetName) {
     .select("text")
     .append("tspan")
     .attr("baseline-shift", "super")
-    .attr("font-size", "0.75rem")
+    .attr("font-size", toString(0.6 * parseFloat(Constants.labelSize)))
     .style("fill", Constants.roadColor)
     .text("st");
 }
@@ -107,7 +107,7 @@ export function placeAvenueLabel(group, avenueCoordinates, avenueName) {
     .attr("x", finalX)
     .attr("y", finalY)
     .style("text-anchor", "start") // Start the text at the beginning of the line
-    .style("font-size", "1rem")
+    .style("font-size", Constants.labelSize)
     .style("fill", Constants.roadColor)
     .text(avenueName);
 }

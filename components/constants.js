@@ -98,22 +98,38 @@ export const coatRy = 18;
 
 export const coatEllipseNumber = 38;
 
-// export const greyColor = "#333F47";
-export const roadColor = "#FFFFF0";
+export const roadColor = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--dropdown");
+// export const roadColor = "#FFFFF0";
+// export const roadColor = "#4B4F54";
 export const labelColor = "#00A676";
+export const backgroundColor = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--my-background-color");
 
 // coat colors
-export const greyCoat = "#515052";
-// export const redCoat = "#C57556";
-export const redCoat = "#C03221";
-export const whiteCoat = "#EBE6DF";
-export const blueCoat = "#2188A8";
-export const greenCoat = "#60966B";
-// export const beigeCoat = "#D1A768";
-export const beigeCoat = "#F2E0A6";
-export const pinkCoat = "#C18EA3";
-export const blackCoat = "#1A1A1A";
-export const brownCoat = "#925544";
+// export const greyCoat = "#515052";
+// // export const redCoat = "#C57556";
+// export const redCoat = "#C03221";
+// export const whiteCoat = "#EBE6DF";
+// export const blueCoat = "#2188A8";
+// export const greenCoat = "#60966B";
+// // export const beigeCoat = "#D1A768";
+// export const beigeCoat = "#F2E0A6";
+// export const pinkCoat = "#C18EA3";
+// export const blackCoat = "#1A1A1A";
+// export const brownCoat = "#925544";
+
+export const greyCoat = "#54585a";
+export const redCoat = "#cb333b";
+export const whiteCoat = "#FFFFF0";
+export const blueCoat = "#041e42";
+export const greenCoat = "#6d712e";
+export const beigeCoat = "#e0c6ad";
+export const pinkCoat = "#ECC7CD";
+export const blackCoat = " #101820";
+export const brownCoat = "#453536";
 
 export const dataColors = {
   Grey: greyCoat,
@@ -137,10 +153,26 @@ data.forEach((coat) => {
   coatsByColor.get(color).push(coat);
 });
 
+export const defaultImgSource = "../assets/images/blue-new.png";
+
+export const imgSource = {
+  Beige: "../assets/images/beige-new.png",
+  Blue: "../assets/images/blue-new.png",
+  Brown: "../assets/images/brown.png",
+  Grey: "../assets/images/grey-new.png",
+  Black: "../assets/images/black.png",
+  Green: "../assets/images/green.png",
+  White: "../assets/images/white.png",
+  Red: "../assets/images/red.png",
+  Pink: "../assets/images/pink.png",
+};
+
 export const descriptions = {
-  Beige: "Description for Beige. Lorem ipsum dolor sit amet...",
-  Blue: "Description for Blue. Lorem ipsum dolor sit amet...",
-  Brown: "Description for Brown. Lorem ipsum dolor sit amet...",
+  Beige:
+    "During World War I, as men went off to fight, women took on jobs formerly filled by men. They volunteered for organizations like the Red Cross and joined the military. Many of the occupations demanded the wearing of uniforms, including trousers bringing military-style tunic jackets, belts, and epaulets in fashion. People took to a plainer lifestyle. Women wore less jewelry, and the lavish clothing of the Edwardian period fell by the wayside. Colors became sober and muted. And so we have the color beige!",
+  Blue: "The word “navy” betrays the color’s origins. In 1749, the British Royal Navy decided to adopt a special dark-blue uniform. The choice of this color was no coincidence. It is extracted from an indigo plant native to India and has an extremely handy characteristic: it is resistant to both the sun and sea water. The plant had been imported to Europe since the late mediaeval period, but the prices were extortionate. It was only when the British Empire colonized India that this raw material became abundant and affordable – quite the coincidence! HMMMM.",
+  Brown:
+    "Brown became more widely used in the late 19th century, as major armies began outfitting their soldiers in khakis and light browns for camouflage amid the emergence of trench and aerial warfare. Between the 1920s and 1940s, attitudes toward brunette shades became more positive, thanks in part to the proliferation of Art Deco, a design aesthetic that embraced taupes and creams, metal finishes, and bold geometric patterns. It was during this era that light, washed-out browns were praised as elegant, luxurious, and comforting. Unlike the timelessness or Beige, fashion has a more love-hate relationship with Brunette shades.",
   Grey: "Description for Grey. Lorem ipsum dolor sit amet...",
   Black: "Description for Black. Lorem ipsum dolor sit amet...",
   Green: "Description for Green. Lorem ipsum dolor sit amet...",
@@ -151,4 +183,8 @@ export const descriptions = {
 };
 
 export const defaultDescription =
-  "Welcome to an interactive guide for the winter fashion trends of New York City streets! Ever wondered what the color palette of New York looks like? Whether it's the classic black, the bold reds, or the soothing pastels, this data viz program plots the choices of New Yorkers. With just a glance, get a color-coded snapshot of today's street style - are neutrals the rage, or is the city blooming with bright hues? Find out for yourself!";
+  "Choose a color and know its fashion history & significance!";
+
+export const labelSize = getComputedStyle(
+  document.documentElement
+).getPropertyValue("--dropdown-fontsize");

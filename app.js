@@ -1,9 +1,6 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-import { mapReplica } from "./components/map.js";
 import * as Constants from "./components/constants.js";
-import { drawCoatsAlongStreet } from "./components/coats.js";
-import { dropdownFilter } from "./components/filter.js";
-import { gridToSvgCoordinates } from "./components/util.js";
+import { createVisualization } from "./components/visualization.js";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -18,13 +15,15 @@ svg
   .append("rect")
   .attr("width", "100%")
   .attr("height", "100%")
-  .attr("fill", "#2C2C30");
+  .attr("fill", Constants.backgroundColor);
 
 const gridWidth = width;
 const gridHeight = height;
 
 export const verticalGridSpacing = gridWidth / Constants.numVerticalLines;
 export const horizontalGridSpacing = gridHeight / Constants.numHorizontalLines;
+
+createVisualization(svg);
 
 // Draw vertical lines
 // svg
@@ -61,23 +60,3 @@ export const horizontalGridSpacing = gridHeight / Constants.numHorizontalLines;
 // mapReplica(mapGroup, labelsGroup);
 // drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
 // dropdownFilter(coatGroup);
-
-const xloc = 18;
-const yloc = 10;
-
-const [finalX, finalY] = gridToSvgCoordinates(xloc, yloc);
-
-// Create a parent group for all visualization components
-const visualizationGroup = svg
-  .append("g")
-  .attr("transform", `translate(${finalX}, ${finalY}) scale(0.66)`);
-
-// Append your groups to the visualizationGroup instead of directly to svg
-const mapGroup = visualizationGroup.append("g");
-const coatGroup = visualizationGroup.append("g");
-const labelsGroup = visualizationGroup.append("g");
-
-// Continue as before
-mapReplica(mapGroup, labelsGroup);
-drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
-dropdownFilter(coatGroup);

@@ -1,9 +1,12 @@
 :root {
-  --white: #fffff0;
-  --proportion-top-dropdown: 0.685;
+  --text: #4b4f54;
+  --dropdown: #adaeae;
+  --my-background-color: #fcf5e5;
+  --proportion-top-dropdown: 0.63;
   --dropdown-fontsize: 1rem;
-  --title-fontsize: 4.24rem;
-  --description-fontsize: 1rem;
+  --title-fontsize: calc(var(--description-fontsize) * 1.618 * 1.618 * 1.618);
+  --description-fontsize: var(--dropdown-fontsize);
+  --margin: 1rem;
 }
 
 html {
@@ -14,7 +17,8 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  font-family: "Fira-Sans-Regular";
+  font-family: "PT-Sans";
+  background-color: var(--my-background-color);
   /* overflow: hidden; Consider removing or adjusting if you want to allow scrolling */
 }
 
@@ -31,51 +35,93 @@ body {
 }
 
 .text-container {
+  margin-top: var(--margin);
+  margin-right: calc(var(--margin) * 1.618 * 1.618);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
   z-index: 10;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Align children to the right */
 }
 
-.dropdown {
-  position: absolute;
-  top: calc(var(--proportion-top-dropdown) * 100vh);
-  left: 2rem;
-  background-color: transparent;
-  font-family: "Fira-Sans-Regular";
-  color: var(--white);
-  border-color: var(--white);
-  padding-left: 4px;
-  padding-right: 5px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  cursor: pointer;
-  font-size: var(--dropdown-fontsize);
+.info-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 1rem; /* Align children to the start (left) within the container */
+  /* Space between title, description, and dropdown */
 }
 
 .title {
-  position: absolute;
-  top: 0;
-  margin-top: 2rem;
-  right: 2rem;
   font-size: var(--title-fontsize);
-  color: var(--white);
+  color: var(--text);
+  font-weight: 500;
 }
 
 .description {
-  color: var(--white);
-  position: absolute;
-  top: calc(var(--proportion-top-dropdown) * 100vh + 2rem);
-  left: 2rem;
+  color: var(--text);
   font-size: var(--description-fontsize);
-  width: calc(0.3 * 100vw);
-  padding: 0;
-  margin-top: 1rem;
+}
+
+.dropdown {
+  margin-left: auto;
+  font-family: "PT-Sans";
+  font-weight: 500;
+  color: var(--dropdown);
+  border-color: var(--dropdown);
+  border-width: 2px;
+  padding-top: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  width: 23%;
+  margin-top: calc(var(--margin) * 1.618 * 1.618);
+  align-items: flex-end;
+  font-size: var(--dropdown-fontsize);
+  background-color: transparent; /* If you want to see the d3 visualization through the dropdown */
+}
+
+.bottom-left-container {
+  transition: opacity 750ms;
+  opacity: 1;
+  position: absolute;
+  bottom: calc(var(--margin) * 2);
+  left: calc(var(--margin) * 2);
+  z-index: 10;
+  width: auto;
+  box-sizing: border-box;
+  width: 33.3%;
+}
+.bottom-left-image-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  width: 35%;
+}
+
+.bottom-left-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
   transition: opacity 750ms;
   opacity: 1;
 }
 
-.description.fade-out {
+.bottom-left-container.fade-out,
+.bottom-left-image-container img.fade-out {
   opacity: 0;
 }
+
+/* .dropdown,
+.description {
+  margin-left: 2rem; /* If you want some spacing from the left edge */
+/* } */
 
 @font-face {
   font-family: "Fira-Sans-Regular";
@@ -85,4 +131,14 @@ body {
 @font-face {
   font-family: "Fira-Sans-Medium";
   src: url("./assets/fonts/Fira_Sans/FiraSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Bodoni-Moda";
+  src: url("./assets/fonts/Bodoni_Moda/BodoniModa-VariableFont_opsz\,wght.ttf");
+}
+
+@font-face {
+  font-family: "PT-Sans";
+  src: url("./assets/fonts/PT_Sans/PTSans-Regular.ttf");
 }
