@@ -16,9 +16,6 @@ export function drawCoatsAlongStreet(group, coats, streets) {
 
     const yPosition = findYForX(coat.X, streetVertices);
     const currentColor = coat.ColorName;
-    console.log(
-      `Coat color for ${currentColor} is ${Constants.dataColors[currentColor]}`
-    );
 
     if (yPosition !== null) {
       const [finalX, finalY] = gridToSvgCoordinates(coat.X, yPosition - 0.45);

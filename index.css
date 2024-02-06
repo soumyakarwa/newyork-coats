@@ -2,6 +2,7 @@
   --text: #4b4f54;
   --dropdown: #adaeae;
   --my-background-color: #fcf5e5;
+  --my-background-color-hex: rgb(255, 245, 229, 0.7);
   --proportion-top-dropdown: 0.63;
   --dropdown-fontsize: 1rem;
   --title-fontsize: calc(var(--description-fontsize) * 1.618 * 1.618 * 1.618);
@@ -71,18 +72,18 @@ body {
 
 .dropdown {
   margin-left: auto;
-  font-family: "PT-Sans";
+  font-family: "Bodoni-Moda";
   font-weight: 500;
   color: var(--dropdown);
   border-color: var(--dropdown);
   border-width: 2px;
-  padding-top: 4px;
+  padding-top: 2.5px;
   padding-left: 4px;
   padding-right: 4px;
   padding-bottom: 5px;
   cursor: pointer;
-  width: 23%;
-  margin-top: calc(var(--margin) * 1.618 * 1.618);
+  width: 20%;
+  margin-top: calc(var(--margin) * 1.618 * 1.618 * 1.618);
   align-items: flex-end;
   font-size: var(--dropdown-fontsize);
   background-color: transparent;

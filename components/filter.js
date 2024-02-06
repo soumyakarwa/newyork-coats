@@ -31,7 +31,6 @@ export function dropdownFilter(coatGroup) {
       paragraph.text(descriptionText);
       image.attr("src", imagePath);
       image.attr("alt", "Descriptive text for " + selectedColor + " coat");
-      needed;
 
       paragraph.classed("fade-out", false);
       image.classed("fade-out", false);
