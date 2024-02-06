@@ -113,6 +113,8 @@ export function placeAvenueLabel(group, avenueCoordinates, avenueName) {
 }
 
 export function placeCoatCountLabel(group, count) {
+  group.selectAll(".coat-count-label").remove();
+
   const [finalX, finalY] = gridToSvgCoordinates(
     Constants.street8[3][0] - 8,
     Constants.street8[3][1]
@@ -120,6 +122,7 @@ export function placeCoatCountLabel(group, count) {
 
   group
     .append("text")
+    .attr("class", "coat-count-label")
     .attr("x", finalX)
     .attr("y", finalY)
     .style("text-anchor", "start") // Start the text at the beginning of the line

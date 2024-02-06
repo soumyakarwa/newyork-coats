@@ -4,6 +4,7 @@ import * as Constants from "./constants.js";
 import { drawCoatsAlongStreet } from "./coats.js";
 import { dropdownFilter } from "./filter.js";
 import { gridToSvgCoordinates } from "./util.js";
+import { placeCoatCountLabel } from "./labels.js";
 
 export function createVisualization(svg) {
   const xloc = 13.5;
@@ -22,4 +23,5 @@ export function createVisualization(svg) {
   mapReplica(mapGroup, labelsGroup);
   drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
   dropdownFilter(coatGroup, labelsGroup);
+  placeCoatCountLabel(labelsGroup, Constants.data.length);
 }

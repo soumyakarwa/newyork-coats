@@ -77,7 +77,8 @@ export function filterCoatsByColor(group, selectedColor) {
   var colorCount = 0;
 
   Constants.data.forEach((coat) => {
-    if (coat.ColorName === selectedColor) {
+    console.log(selectedColor);
+    if (coat.ColorName === selectedColor || selectedColor === "all") {
       colorCount++;
     }
   });
