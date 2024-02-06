@@ -2,7 +2,7 @@
   --text: #4b4f54;
   --dropdown: #adaeae;
   --my-background-color: #fcf5e5;
-  --my-background-color-hex: rgb(255, 245, 229, 0.7);
+  --my-background-color-hex: rgb(255, 245, 229, 0.75);
   --proportion-top-dropdown: 0.63;
   --dropdown-fontsize: 1rem;
   --description-fontsize: var(--dropdown-fontsize);
