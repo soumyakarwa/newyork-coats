@@ -4,6 +4,13 @@ html {
   height: 100%;
 }
 
+.titlelanding {
+  font-size: var(--title-fontsize);
+  color: var(--text);
+  font-weight: 400;
+  font-family: "Bodoni-Moda";
+}
+
 .landingpage {
   position: relative;
   display: flex;
@@ -13,8 +20,15 @@ html {
   height: 100%;
 }
 
+.info-container-landing {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+}
+
 .button-container {
-  margin-top: var(--margin);
+  margin-top: calc(var(--margin) * 2);
   margin-bottom: var(--margin);
 }
 

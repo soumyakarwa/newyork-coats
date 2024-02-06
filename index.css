@@ -5,8 +5,8 @@
   --my-background-color-hex: rgb(255, 245, 229, 0.7);
   --proportion-top-dropdown: 0.63;
   --dropdown-fontsize: 1rem;
-  --title-fontsize: calc(var(--description-fontsize) * 1.618 * 1.618 * 1.618);
   --description-fontsize: var(--dropdown-fontsize);
+  --title-fontsize: calc(var(--description-fontsize) * 1.618 * 1.618 * 1.618);
   --margin: 1rem;
 }
 
@@ -68,6 +68,7 @@ body {
 
 .description {
   color: var(--text);
+  font-family: "Bodoni-Moda";
   font-size: var(--description-fontsize);
 }
 
@@ -108,6 +109,7 @@ body {
   z-index: 10;
   width: auto;
   box-sizing: border-box;
+  font-family: "Bodoni-Moda";
   width: 33.3%;
 }
 .image-container {
