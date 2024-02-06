@@ -153,11 +153,11 @@ data.forEach((coat) => {
   coatsByColor.get(color).push(coat);
 });
 
-export const defaultImgSource = "../assets/images/blue-new.png";
+export const defaultImgSource = "../assets/images/navy-blue.png";
 
 export const imgSource = {
   Beige: "../assets/images/beige-new.png",
-  Blue: "../assets/images/blue-new.png",
+  Blue: "../assets/images/navy-blue.png",
   Brown: "../assets/images/brown.png",
   Grey: "../assets/images/grey-new.png",
   Black: "../assets/images/black.png",

@@ -22,6 +22,7 @@ body {
   /* overflow: hidden; Consider removing or adjusting if you want to allow scrolling */
 }
 
+/* OVERALL CONTAINER FOR D3 + TEXT*/
 .application {
   position: relative;
   display: flex;
@@ -29,37 +30,38 @@ body {
   height: 100%;
 }
 
+/* CONTAINS D3 VISUALIZATION*/
 .d3-container {
   position: relative;
   z-index: 1;
 }
 
-.text-container {
+/* CONTAINS TITLE AND DESCRIPTION AND DROPDOWN */
+.right-container {
   margin-top: var(--margin);
   margin-right: calc(var(--margin) * 1.618 * 1.618);
   position: absolute;
   top: 0;
   right: 0;
-  width: 30%;
+  width: 40%;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  /* Align children to the right */
 }
 
+/* CONTAINS DESCRIPTION AND DROPDOWN */
 .info-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  gap: 1rem; /* Align children to the start (left) within the container */
-  /* Space between title, description, and dropdown */
+  gap: 1rem;
 }
 
 .title {
   font-size: var(--title-fontsize);
   color: var(--text);
-  font-weight: 500;
+  font-weight: 400;
+  font-family: "Bodoni-Moda";
 }
 
 .description {
@@ -83,10 +85,17 @@ body {
   margin-top: calc(var(--margin) * 1.618 * 1.618);
   align-items: flex-end;
   font-size: var(--dropdown-fontsize);
-  background-color: transparent; /* If you want to see the d3 visualization through the dropdown */
+  background-color: transparent;
 }
 
-.bottom-left-container {
+/* CONTAINS COLOR DESCRIPTION AND IMAGE*/
+.color-specific {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+
+.left-container {
   transition: opacity 750ms;
   opacity: 1;
   position: absolute;
@@ -97,15 +106,15 @@ body {
   box-sizing: border-box;
   width: 33.3%;
 }
-.bottom-left-image-container {
+.image-container {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: calc(var(--margin) * 2);
+  left: calc(var(--margin) * 2);
   z-index: 9;
-  width: 35%;
+  width: 33.3%;
 }
 
-.bottom-left-image-container img {
+.image-container img {
   width: 100%;
   height: auto;
   display: block;
@@ -113,15 +122,14 @@ body {
   opacity: 1;
 }
 
-.bottom-left-container.fade-out,
-.bottom-left-image-container img.fade-out {
+.left-container.fade-out,
+.image-container img.fade-out {
   opacity: 0;
 }
 
-/* .dropdown,
-.description {
-  margin-left: 2rem; /* If you want some spacing from the left edge */
-/* } */
+.text-italics {
+  font-family: "Bodoni-Moda-Italics";
+}
 
 @font-face {
   font-family: "Fira-Sans-Regular";
@@ -136,6 +144,11 @@ body {
 @font-face {
   font-family: "Bodoni-Moda";
   src: url("./assets/fonts/Bodoni_Moda/BodoniModa-VariableFont_opsz\,wght.ttf");
+}
+
+@font-face {
+  font-family: "Bodoni-Moda-Italics";
+  src: url("./assets/fonts/Bodoni_Moda/BodoniModa-Italic-VariableFont_opsz\,wght.ttf");
 }
 
 @font-face {
