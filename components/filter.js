@@ -12,8 +12,8 @@ export function dropdownFilter(coatGroup) {
 
   d3.select("#color-filter").on("change", function () {
     const selectedColor = d3.select(this).property("value");
-    filterCoatsByColor(coatGroup, selectedColor);
-
+    const count = filterCoatsByColor(coatGroup, selectedColor);
+    console.log(count);
     const paragraph = d3.select(".left-container");
     const image = d3.select(".image-container img"); // Select the image
 

@@ -74,6 +74,13 @@ function findYForX(x, vertices) {
 export function filterCoatsByColor(group, selectedColor) {
   const transitionDuration = 750;
   const defaultRadius = Constants.coatEllipseSize;
+  var colorCount = 0;
+
+  Constants.data.forEach((coat) => {
+    if (coat.ColorName === selectedColor) {
+      colorCount++;
+    }
+  });
 
   group
     .selectAll(".dot")
@@ -94,4 +101,5 @@ export function filterCoatsByColor(group, selectedColor) {
         selectedColor === "all" || d.color === selectedColor ? null : "none"
       );
     });
+  return colorCount;
 }
