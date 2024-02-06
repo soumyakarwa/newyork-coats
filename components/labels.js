@@ -111,3 +111,19 @@ export function placeAvenueLabel(group, avenueCoordinates, avenueName) {
     .style("fill", Constants.roadColor)
     .text(avenueName);
 }
+
+export function placeCoatCountLabel(group, count) {
+  const [finalX, finalY] = gridToSvgCoordinates(
+    Constants.street8[3][0] - 8,
+    Constants.street8[3][1]
+  );
+
+  group
+    .append("text")
+    .attr("x", finalX)
+    .attr("y", finalY)
+    .style("text-anchor", "start") // Start the text at the beginning of the line
+    .style("font-size", Constants.labelSize)
+    .style("fill", Constants.roadColor)
+    .text(`Coat Count: ${count}`);
+}

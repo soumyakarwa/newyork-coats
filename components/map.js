@@ -1,7 +1,11 @@
 // Map.js
 import { createRandomDotsInPolygon } from "./lines.js";
 import { convertingVerticesSet } from "./util.js";
-import { placeStreetLabel, placeAvenueLabel } from "./labels.js";
+import {
+  placeStreetLabel,
+  placeAvenueLabel,
+  placeCoatCountLabel,
+} from "./labels.js";
 
 import * as Constants from "./constants.js";
 

@@ -2,8 +2,9 @@
 import * as Constants from "./constants.js";
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { filterCoatsByColor } from "./coats.js";
+import { placeCoatCountLabel } from "./labels.js";
 
-export function dropdownFilter(coatGroup) {
+export function dropdownFilter(coatGroup, labelsGroup) {
   const colorFilterSelect = d3.select("#color-filter");
 
   Constants.coatsByColor.forEach((_, color) => {
@@ -13,7 +14,8 @@ export function dropdownFilter(coatGroup) {
   d3.select("#color-filter").on("change", function () {
     const selectedColor = d3.select(this).property("value");
     const count = filterCoatsByColor(coatGroup, selectedColor);
-    console.log(count);
+    // placeCoatCountLabel(labelsGroup, count);
+
     const paragraph = d3.select(".left-container");
     const image = d3.select(".image-container img"); // Select the image
 

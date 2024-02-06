@@ -21,5 +21,5 @@ export function createVisualization(svg) {
   const labelsGroup = visualizationGroup.append("g");
   mapReplica(mapGroup, labelsGroup);
   drawCoatsAlongStreet(coatGroup, Constants.data, Constants.streets);
-  dropdownFilter(coatGroup);
+  dropdownFilter(coatGroup, labelsGroup);
 }
